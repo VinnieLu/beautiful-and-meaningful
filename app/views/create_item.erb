@@ -1,0 +1,40 @@
+<div class="error">
+	<% if @error %>
+	<%= @error %>
+	<% end %>
+</div>
+<br>
+<h1>Create an item</h1>
+<br>
+<form action="/item/create" method="post">
+	<div class="row">
+		<div class="col-sm-6 create_form">
+			Name:
+			<input type="text" name="name">
+		</div>
+		<div class="col-sm-6 create_form">
+			Condition:
+			<input type="text" name="condition"></div>
+		</div>
+	<div class="row">
+		<div class="col-sm-12 create_form">
+			Description:
+			<input type="text" name="description"><br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 create_form">
+			Auction start:
+			<input type="datetime-local" name="auction_start">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 create_form">
+			Auction end:
+			<input type="datetime-local" name="auction_end"><br>
+		</div>
+	</div>
+		<div class="row create_form">
+			<input type="submit" class="btn-default" value="List Item for Auction">
+		</div>
+</form>

@@ -1,0 +1,41 @@
+<h1>
+<div class="error">
+	<% if @error %>
+	<%= @error %>
+	<br>
+	<% end %>
+</div>
+
+Welcome, <%= @user.username %>!
+</h1>
+
+<a id="item-list-link" href="/item/create">+list an item</a>
+<br>
+
+<h3>Items:</h3>
+
+	<% if @items.length > 0 %>
+	<div class="row">
+		<% @items.each do |k| %>
+			<div class="col-sm-6">
+				<h3><%= k.name %></h3>
+			</div>
+			<div class="col-sm-3">
+				<p><a href="/item/edit/<%=k.id%>">Edit item</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="/item/delete/<%=k.id%>">Delete item</a>
+				</p>
+			</div>
+		<% end %>
+	</div>
+	<% else %>
+	<div class="row">
+		<div class="col-sm-12">
+			<p>You currently have no items up for auction</p>
+		</div>
+	</div>
+	<% end %>
+
+
+<br>

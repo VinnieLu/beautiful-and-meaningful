@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+
+  <!-- For hiding tokens -->
+  <!-- <link rel="tokens" href="/.env"> -->
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/application.js"></script>
+
+      <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- Stripe scripts -->
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <title></title>
+</head>
+<body>
+  <!-- Facebook API -->
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1946036835674499',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=734116083447536';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">DBC Auction!</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <h2>
+            <% @user = User.find_by(id: session[:user_id]) %>
+            <% if session[:user_id] %>
+              <a href="/user/profile/<%=@user.id%>"><%= @user.username %> |</a>
+              <a href="/user/logout"> Logout |</a>
+            <% else %>
+              <a href="/user/register"> Register |</a>
+              <a href="/user/login"> Login |</a>
+            <% end %>
+            <a href="/"> Home |</a>
+            <a href="/tweets"> Tweets</a>
+          </h2>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+  <!-- <div class="header">
+    <h1>DBC Auction!</h1>
+  </div>
+  <div class="header_links">
+    <h2>
+    <% @user = User.find_by(id: session[:user_id]) %>
+    <% if session[:user_id] %>
+      <a href="/user/profile/<%=@user.id%>"><%= @user.username %> | </a>
+      <a href="/user/logout">Logout | </a>
+    <% else %>
+      <a href="/user/register">Register | </a>
+      <a href="/user/login">Login | </a>
+    <% end %>
+    <a href="/">Home</a>
+    </h2>
+  </div> -->
+
+<div class="body-container">
+
+    <%= yield %>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<h1>Current Auctions:</h1>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JzbMAFHZY0s" frameborder="0" allowfullscreen></iframe>
+<br>
+
+
+<div class="container">
+	<div class="row">
+		<% @items.each do |k| %>
+			<% if (k.auction_start < Time.now) && (k.auction_end > Time.now) %>
+				<h3>* <a href="/item/details/<%=k.id%>"><%=k.name%></a></h3>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+	<form action="/facebook/logout" method="post" class="fb-logout-button">
+	<input type="submit">
+	</form>
+	
+</div>
+

@@ -1,0 +1,21 @@
+<div class="error">
+	<% if @error %>
+	<%= @error %>
+	<% end %>
+</div>
+<br>
+<h1>Edit an item</h1>
+<br>
+<form action="/item/edit/<%=@item.id%>" method="post">
+	Name:
+	<input type="text" name="name" value="<%=@item.name%>"><br>
+	Condition:
+	<input type="text" name="condition" value="<%=@item.condition%>"><br>
+	Description:
+	<input type="text" name="description" value="<%=@item.description%>"><br>
+	Auction start:
+	<input type="datetime-local" name="auction_start" value="<%=@item.auction_start%>"><br>
+	Auction end:
+	<input type="datetime-local" name="auction_end" value="<%=@item.auction_end%>"><br>
+	<input type="submit" value="Edit Item">
+</form>
